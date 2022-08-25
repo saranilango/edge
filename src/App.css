@@ -1,0 +1,22 @@
+@import '~antd/dist/antd.css';
+
+.ant-layout-header,
+.ant-layout-footer {
+  color: #fff;
+  background: #7dbcea;
+  width: 100%;
+  position: fixed;
+  padding: 10px 0;
+}
+.ant-layout-header {
+  top: 0;
+}
+.ant-layout-footer {
+  bottom: 0;
+}
+.body-content {
+  position: inherit;
+  height: inherit;
+  background-color: rgb(255, 255, 255);
+}
+
