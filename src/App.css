@@ -1,18 +1,24 @@
 @import '~antd/dist/antd.css';
-
+.ant-layout{
+  background: #fff;
+}
 .ant-layout-header,
 .ant-layout-footer {
   color: #fff;
-  background: #7dbcea;
-  width: 100%;
+  background: #1890ff;
   position: fixed;
-  padding: 10px 0;
+    width: 100%;
+    z-index: 10;
 }
 .ant-layout-header {
   top: 0;
+  height:40px;
+  display: flex;
 }
 .ant-layout-footer {
   bottom: 0;
+  height:20px;
+  padding: 0;
 }
 .body-content {
   position: inherit;
@@ -20,3 +26,29 @@
   background-color: rgb(255, 255, 255);
 }
 
+.ant-layout-header h2{
+  margin: 0;
+  line-height: 40px;
+  color:#fff;
+}
+.searchTop{
+  width:40%;
+  margin-left: 20%;
+}
+.searchTop input{
+  height:30px;
+  border-radius: 20px;
+  background: #fff;
+  width:100%;
+  border:1px solid #fff;
+  position: relative;
+    top: -10px;
+}
+.ant-layout-content{
+  margin: 50px;
+  border:1px solid #000;
+}
+.rbutton{
+  padding: 20px 16px;
+  border-bottom: 1px solid #000;
+}

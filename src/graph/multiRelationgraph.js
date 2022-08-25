@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import { DecompositionTreeGraph } from '@ant-design/graphs';
 
 const DemoDecompositionTreeGraph = () => {
@@ -95,8 +94,7 @@ const DemoDecompositionTreeGraph = () => {
     ],
   };
 
-  
- const fetchData = () => {
+  const fetchData = () => {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
         resolve(
@@ -133,17 +131,14 @@ const DemoDecompositionTreeGraph = () => {
       getChildren,
     },
     markerCfg: (cfg) => {
-      const { children } = cfg;
       return {
-        show: true,
-        collapsed: !children.length,
+        show: false,
       };
     },
-    behaviors: ['drag-canvas', 'zoom-canvas', 'drag-node'],
+    behaviors: ['drag-canvas', 'drag-node'],
   };
 
   return <DecompositionTreeGraph {...config} />;
 };
 
 export default DemoDecompositionTreeGraph; 
-// ReactDOM.render(<DemoDecompositionTreeGraph />, document.getElementById('root'));
