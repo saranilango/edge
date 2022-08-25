@@ -16,9 +16,9 @@ function Dashboard() {
             <div>
                 <DecompositionTreeGraph />
             </div>
-            <div>
+            {/* <div>
                 <OrganizationGraphs /> 
-            </div>
+            </div> */}
         </div>
     )
 }
