@@ -1,7 +1,7 @@
 
 import { Checkbox } from 'antd';
-import DecompositionTreeGraph from '../graph/multiRelationGraph.js';
-import OrganizationGraphs from '../graph/organizationGraph.js';
+import DecompositionTreeGraph from '../../components/graph/multiRelationGraph';
+import OrganizationGraphs from '../../components/graph/organizationGraph';
 
 function Dashboard() {
     const onChange = (e) => {
