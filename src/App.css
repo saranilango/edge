@@ -1,54 +1,178 @@
 @import '~antd/dist/antd.css';
-.ant-layout{
+
+.ant-layout {
   background: #fff;
 }
+
 .ant-layout-header,
 .ant-layout-footer {
   color: #fff;
   background: #1890ff;
   position: fixed;
-    width: 100%;
-    z-index: 10;
+  width: 100%;
+  z-index: 10;
 }
+
 .ant-layout-header {
   top: 0;
-  height:40px;
+  height: 40px !important;
   display: flex;
 }
+
 .ant-layout-footer {
   bottom: 0;
-  height:20px;
+  height: 20px !important;
   padding: 0;
 }
+
 .body-content {
   position: inherit;
   height: inherit;
   background-color: rgb(255, 255, 255);
 }
 
-.ant-layout-header h2{
+.ant-layout-header h2 {
   margin: 0;
-  line-height: 40px;
-  color:#fff;
+  width: 20% !important;
+  line-height: 40px !important;
+  color: #fff;
 }
-.searchTop{
-  width:40%;
-  margin-left: 20%;
+
+.searchTop {
+  width: 40% !important;
+  margin-left: 13% !important;
 }
-.searchTop input{
-  height:30px;
+
+.searchTop input {
+  height: 30px !important;
   border-radius: 20px;
   background: #fff;
-  width:100%;
-  border:1px solid #fff;
+  width: 100%;
+  border: 1px solid #fff;
   position: relative;
-    top: -10px;
+  top: -10px;
 }
-.ant-layout-content{
-  margin: 50px;
-  border:1px solid #000;
+
+.ant-layout-content {
+  margin: 50px !important;
 }
-.rbutton{
-  padding: 20px 16px;
-  border-bottom: 1px solid #000;
+
+.rbutton {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  gap: 20px;
+  padding: 10px 10px;
+  height: 140px !important;
+}
+
+.filter {
+  border: 1px solid rgba(0, 0, 0, 0.24);
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 4px;
+  transition: all 0.3s ease-out;
+  border-radius: 5px !important;
+}
+
+.strict_line {
+  width: 100%;
+  padding: 5px !important;
+}
+
+.strict_line button {
+  float: right;
+  font-size: large;
+  font-weight: bold;
+  border: none;
+  background: inherit;
+}
+
+.strict_line span {
+  font-size: large;
+  font-weight: bold;
+  padding-left: 5px;
+}
+
+.ant-layout-header .anticon-search {
+  height: 20px;
+  width: 20px;
+  position: relative;
+  top: 10px;
+  margin-left: 5px;
+}
+
+.anticon-search svg {
+  height: 100%;
+  width: 100%;
+}
+
+.ant-btn-circle {
+  margin-left: 25%;
+  top: 5px;
+}
+
+.ant-btn-circle svg {
+  color: #1890ff;
+}
+
+.card_layout{
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  border: none;
+  outline: none;
+}
+
+.decompose-tree,.organization-tree{
+  border: 1px solid rgba(0, 0, 0, 0.24);
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 4px;
+  padding: 5px;
+  border-radius: 5px !important;
+  margin-top: 10px;
+  overflow: auto;
+  height: 400px;
+}
+
+.loading {
+display: flex;
+justify-content: center;
+height: 400px;
+
+}
+.loading img{
+position: absolute;
+top:40%;
+  height: 100px;
+  width: 100px;
+}
+
+.check-boxes {
+  display: flex;
+  flex-direction: row;
+  height: 120px;
+  gap: 10px;
+  width: 80% !important;
+  border: 1px solid rgba(0, 0, 0, 0.24);
+
+}
+.left_box,.right_box{
+  width: 50% !important;
+  padding: 5px;
+  height: 100%;
+}
+.left_box{
+  border-right: 1px solid rgba(0, 0, 0, 0.24);
+}
+
+.domain_checkboxs,.subdomain_checkboxs{
+  border: 1px solid rgba(0, 0, 0, 0.24);
+  padding: 5px;
+  width: 100% !important;
+  height: 80px;
+  overflow: auto;
+}
+
+.subheading{
+  font-weight: 700;
+}
+
+.button-option {
+  width: 20%;
 }

@@ -1,144 +1,43 @@
 import React from 'react';
-import { DecompositionTreeGraph } from '@ant-design/graphs';
+import { FlowAnalysisGraph } from '@ant-design/graphs';
 
-const DemoDecompositionTreeGraph = () => {
-  const data = {
-    id: 'A0',
-    value: {
-      title: 'Parent',
-      items: [
-        {
-          text: '3031',
-        },
-      ],
-    },
-    children: [
-      {
-        id: 'A1',
-        value: {
-          title: 'Children1',
-          items: [
-            {
-              text: '1152',
-            },
-            {
-              text: '1153',
-              value: '30%',
-            },
-          ],
-        },
-        children: [
-          {
-            id: 'A11',
-            value: {
-              title: 'Children1.1',
-              items: [
-                {
-                  text: '1153',
-                },
-                {
-                  text: '1153',
-                  value: '30%',
-                },
-              ],
-            },
-          },
-          {
-            id: 'A12',
-            value: {
-              title: 'Children1.2',
-              items: [
-                {
-                  text: '1154',
-                },
-                {
-                  text: '1154',
-                  value: '30%',
-                },
-              ],
-            },
-          },
-          {
-            id: 'A13',
-            value: {
-              title: 'Children1.3',
-              items: [
-                {
-                  text: '1155',
-                },
-                {
-                  text: '1154',
-                  value: '30%',
-                },
-              ],
-            },
-          },
-        ],
-      },
-      {
-        id: 'A2',
-        value: {
-          title: 'Children2',
-          items: [
-            {
-              text: '595万',
-            },
-            {
-              text: '占比',
-              value: '30%',
-              icon: 'https://gw.alipayobjects.com/zos/antfincdn/iFh9X011qd/7797962c-04b6-4d67-9143-e9d05f9778bf.png',
-            },
-          ],
-        },
-      },
-    ],
-  };
-
-  const fetchData = () => {
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        resolve(
-          [1, 2].map(() => ({
-            id: 'A2' + Math.random().toString(),
-            value: {
-              title: '异步节点' + Math.random().toString(),
-              items: [
-                {
-                  text: '595万',
-                },
-                {
-                  text: '占比',
-                  value: '50%',
-                  icon: 'https://gw.alipayobjects.com/zos/antfincdn/iFh9X011qd/7797962c-04b6-4d67-9143-e9d05f9778bf.png',
-                },
-              ],
-            },
-          })),
-        );
-      }, 1000);
-    });
-  };
-
-  const getChildren = async () => {
-    const asyncData = await fetchData();
-    return asyncData;
-  };
-
+const DemoDecompositionTreeGraph = (props) => {
+  // console.log(props.data);
+  const data = props.data;
+  
   const config = {
     data,
     autoFit: false,
+    layout: {
+      rankdir: 'TB',
+      ranksepFunc: () => 30,
+    },
     nodeCfg: {
-      getChildren,
+      autoWidth:true,
+      anchorPoints: [
+        [0.5, 0],
+        [0.5, 1],
+      ],items: {
+        layout: 'follow',
+        
+      },
+    },
+    edgeCfg: {
+      type: 'polyline',
+      endArrow: true,
     },
     markerCfg: (cfg) => {
       return {
-        show: false,
+        position: 'bottom',
+        show: data.edges.filter((item) => item.source === cfg.id)?.length,
       };
     },
-    behaviors: ['drag-canvas', 'drag-node'],
+    behaviors: ['drag-canvas', 'zoom-canvas', 'drag-node'],
   };
 
-  return <DecompositionTreeGraph {...config} />;
+
+
+  return <FlowAnalysisGraph {...config} />;
 };
 
 export default DemoDecompositionTreeGraph; 
