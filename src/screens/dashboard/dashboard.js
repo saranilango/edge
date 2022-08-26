@@ -1,10 +1,10 @@
 
 import { Checkbox, Button, Card } from 'antd';
 import { useState, useEffect } from 'react';
-import DecompositionTreeGraph from '../graph/multiRelationgraph';
-import OrganizationGraphs from '../graph/organizationGraph.js';
+import DecompositionTreeGraph from '../../components/graph/multiRelationgraph';
+import OrganizationGraphs from '../../components/graph/organizationGraph.js';
 import { CaretDownOutlined, CaretUpOutlined } from '@ant-design/icons';
-import SvgLogo from "../loader.svg";
+import SvgLogo from "../../loader.svg";
 function Dashboard() {
     const [isfilter, setisfilter] = useState(true);
     const [isdomain, setisdomain] = useState(true);
