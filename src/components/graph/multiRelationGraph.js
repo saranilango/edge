@@ -81,10 +81,10 @@ const DemoDecompositionTreeGraph = () => {
           title: 'Children2',
           items: [
             {
-              text: '595万',
+              text: '595',
             },
             {
-              text: '占比',
+              text: '595',
               value: '30%',
               icon: 'https://gw.alipayobjects.com/zos/antfincdn/iFh9X011qd/7797962c-04b6-4d67-9143-e9d05f9778bf.png',
             },
@@ -101,13 +101,13 @@ const DemoDecompositionTreeGraph = () => {
           [1, 2].map(() => ({
             id: 'A2' + Math.random().toString(),
             value: {
-              title: '异步节点' + Math.random().toString(),
+              title: 'Children' + Math.random().toString(),
               items: [
                 {
-                  text: '595万',
+                  text: '595',
                 },
                 {
-                  text: '占比',
+                  text: 'Next Childres',
                   value: '50%',
                   icon: 'https://gw.alipayobjects.com/zos/antfincdn/iFh9X011qd/7797962c-04b6-4d67-9143-e9d05f9778bf.png',
                 },
@@ -128,6 +128,10 @@ const DemoDecompositionTreeGraph = () => {
     data,
     autoFit: false,
     nodeCfg: {
+      autoWidth: true,
+      items: {
+        layout: 'follow',
+      }, 
       getChildren,
     },
     markerCfg: (cfg) => {
