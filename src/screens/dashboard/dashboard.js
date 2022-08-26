@@ -1,7 +1,7 @@
 
 import { Checkbox, Button, Card } from 'antd';
 import { useState, useEffect } from 'react';
-import DecompositionTreeGraph from '../../components/graph/multiRelationgraph';
+import DecompositionTreeGraph from '../../components/graph/multiRelationGraph';
 import OrganizationGraphs from '../../components/graph/organizationGraph.js';
 import { CaretDownOutlined, CaretUpOutlined } from '@ant-design/icons';
 import SvgLogo from "../../loader.svg";
