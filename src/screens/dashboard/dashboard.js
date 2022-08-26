@@ -9,17 +9,18 @@ import {
   Row,
   Button,
   Collapse,
+  Card,
 } from "antd";
 
 import DecompositionTreeGraph from "../../components/graph/multiRelationGraph";
-import OrganizationGraphs from "../../components/graph/organizationGraph";
+// import OrganizationGraphs from "../../components/graph/organizationGraph";
 
 const { Panel } = Collapse;
 
 const menu = (
   <Menu
     selectable
-    defaultSelectedKeys={["2"]}
+    defaultSelectedKeys={["1"]}
     items={[
       {
         key: "1",
@@ -38,11 +39,11 @@ function Dashboard() {
     console.log(`checked = ${e.target.checked}`);
   };
   return (
-    <div>
+    <Card>
       <Space>
         <Collapse collapsible="header" defaultActiveKey={["1"]}>
           <Panel key="1">
-            <Row className="rbutton">
+            <Row>
               <Col span={8}>
                 <Checkbox onChange={onChange}>Domain</Checkbox>
                 <Checkbox onChange={onChange}>Sub Domain</Checkbox>
@@ -66,14 +67,10 @@ function Dashboard() {
           </Panel>
         </Collapse>
       </Space>
-
       <div>
         <DecompositionTreeGraph />
       </div>
-      {/* <div>
-                <OrganizationGraphs /> 
-            </div> */}
-    </div>
+    </Card>
   );
 }
 export default Dashboard;

@@ -1,39 +1,39 @@
 @import '~antd/dist/antd.css';
+html {
+  height: 100% !important;
+}
+body {
+height: 100% !important;
+}
 .ant-layout{
-  background: #fff;
+  background: #fff !important;
 }
 .ant-layout-header,
 .ant-layout-footer {
-  color: #fff;
-  background: #1890ff;
-  position: fixed;
-    width: 100%;
-    z-index: 10;
+  color: #fff !important;
+  background: #1890ff !important;
+  position: fixed !important;
+    width: 100% !important;
+    z-index: 10 !important;
 }
 .ant-layout-header {
-  top: 0;
-  height:40px;
-  display: flex;
+  top: 0 !important;
+  height:40px !important;
+  display: flex !important;
 }
 .ant-layout-footer {
-  bottom: 0;
-  height:20px;
-  padding: 0;
+  bottom: 0 !important;
+  height:20px !important;
+  padding: 0 !important;
 }
-.body-content {
-  position: inherit;
-  height: inherit;
-  background-color: rgb(255, 255, 255);
-}
-
 .ant-layout-header h2{
-  margin: 0;
-  line-height: 40px;
-  color:#fff;
+  margin: 0 !important;
+  line-height: 40px !important;
+  color:#fff !important;
 }
 .searchTop{
-  width:40%;
-  margin-left: 20%;
+  width:40% !important;
+  margin-left: 20% !important;
 }
 .searchTop input{
   height:30px;
@@ -46,12 +46,9 @@
 }
 .ant-layout-content{
   margin: 50px;
-  border:1px solid #000;
+  /* border:1px solid #000; */
 }
-.rbutton{
-  padding: 20px 16px;
-  border-bottom: 1px solid #000;
-}
+
 .ant-space.ant-space-horizontal.ant-space-align-center {
   display: inline !important;
 }
