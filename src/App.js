@@ -3,7 +3,7 @@ import {SearchOutlined ,UserOutlined} from '@ant-design/icons';
 import { Layout,Button } from 'antd';
 import React from 'react';
 
-import Dashboard from './dashboard/dashboard.js'
+import Dashboard from './screens/dashboard/dashboard.js'
 const { Header, Footer, Content } = Layout;
 
 function App() {
