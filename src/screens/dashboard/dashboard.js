@@ -51,11 +51,11 @@ function Dashboard() {
             {graphdata&&domainOptions.length>0&&subdomainOptions.length>0 ?
                 <Card className='card_layout'>
                     <div className='filter'>
-                        <div className='strict_line'>
+                        {/* <div className='strict_line'>
                             <span>Filter</span>
                             <button onClick={() => { setisfilter(!isfilter) }}>{isfilter ? <CaretUpOutlined /> : <CaretDownOutlined />}</button>
-                        </div>
-                        {isfilter ?
+                        </div> */}
+                        {/* {isfilter ?
                             <div className="rbutton">
                                 <div className='check-boxes'>
                                     <div className='left_box'><span className='subheading'>Domains</span>
@@ -96,7 +96,7 @@ function Dashboard() {
                                 </div>
                             </div>
                             : ""
-                        }
+                        } */}
 
                     </div>
                     <div className='decompose-tree'>
@@ -104,9 +104,9 @@ function Dashboard() {
                             <DecompositionTreeGraph data={graphdata} />
                             : "Loading.."}
                     </div>
-                    <div className='organization-tree'>
+                    {/* <div className='organization-tree'>
                         <OrganizationGraphs />
-                    </div>
+                    </div> */}
                 </Card>
                 : <div className='loading'><img src={SvgLogo} className="App-logo" alt="logo" /></div>}
         </>
