@@ -1,9 +1,9 @@
 
-import { Checkbox, Button, Card } from 'antd';
+import { Card } from 'antd';
 import { useState, useEffect } from 'react';
 import DecompositionTreeGraph from '../../components/graph/multiRelationGraph';
-import OrganizationGraphs from '../../components/graph/organizationGraph.js';
-import { CaretDownOutlined, CaretUpOutlined } from '@ant-design/icons';
+// import OrganizationGraphs from '../../components/graph/organizationGraph.js';
+// import { CaretDownOutlined, CaretUpOutlined } from '@ant-design/icons';
 import SvgLogo from "../../loader.svg";
 function Dashboard() {
     const [isfilter, setisfilter] = useState(true);
@@ -50,63 +50,11 @@ function Dashboard() {
         <>
             {graphdata&&domainOptions.length>0&&subdomainOptions.length>0 ?
                 <Card className='card_layout'>
-                    <div className='filter'>
-                        {/* <div className='strict_line'>
-                            <span>Filter</span>
-                            <button onClick={() => { setisfilter(!isfilter) }}>{isfilter ? <CaretUpOutlined /> : <CaretDownOutlined />}</button>
-                        </div> */}
-                        {/* {isfilter ?
-                            <div className="rbutton">
-                                <div className='check-boxes'>
-                                    <div className='left_box'><span className='subheading'>Domains</span>
-                                        <div className='domain_checkboxs'>
-                                            <Checkbox.Group
-                                                style={{
-                                                    width: '100%',
-                                                }}
-                                                options={domainOptions}
-                                                defaultValue={domainOptions}
-                                                onChange={onChangesubdomain}
-                                            >
-
-                                            </Checkbox.Group>
-                                        </div>
-                                    </div>
-                                    <div className='right_box'><span className='subheading'>Sub Domains</span>
-                                        <div className='subdomain_checkboxs'>
-                                            <Checkbox.Group
-                                                style={{
-                                                    width: '100%',
-                                                }}
-                                                options={subdomainOptions}
-                                                defaultValue={subdomainOptions}
-                                                onChange={onChangedomain}
-                                            >
-
-                                            </Checkbox.Group>
-                                        </div>
-                                    </div>
-
-                                </div>
-
-                                <div className='button-option'>
-                                    <Button type="primary" >
-                                        Apply
-                                    </Button>
-                                </div>
-                            </div>
-                            : ""
-                        } */}
-
-                    </div>
                     <div className='decompose-tree'>
                         {graphdata ?
                             <DecompositionTreeGraph data={graphdata} />
                             : "Loading.."}
                     </div>
-                    {/* <div className='organization-tree'>
-                        <OrganizationGraphs />
-                    </div> */}
                 </Card>
                 : <div className='loading'><img src={SvgLogo} className="App-logo" alt="logo" /></div>}
         </>

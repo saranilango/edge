@@ -8,7 +8,7 @@
 .ant-layout-footer {
   color: #fff;
   background: #1890ff;
-  position: fixed;
+  position: sticky;
   width: 100%;
   z-index: 10;
 }
@@ -127,7 +127,7 @@
   border-radius: 5px !important;
   margin-top: 10px;
   overflow: auto;
-  height: 400px;
+  height: auto;
 }
 
 .loading {
@@ -184,4 +184,18 @@ top:40%;
 .sidebarh2{
     text-align: center;
     font-weight: bolder;
+}
+
+.ant-layout-sider-trigger {
+  top: 0 !important;
+  position: fixed;
+  bottom: 0;
+  z-index: 1;
+  height: 40px !important;
+  color: #fff;
+  line-height: 48px;
+  text-align: center;
+  background: #1890ff;
+  cursor: pointer;
+  transition: all 0.2s;
 }
