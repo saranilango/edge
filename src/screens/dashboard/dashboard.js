@@ -50,7 +50,7 @@ function Dashboard() {
         <>
             {graphdata&&domainOptions.length>0&&subdomainOptions.length>0 ?
                 <Card className='card_layout'>
-                    <div className='decompose-tree'>
+                    <div>
                         {graphdata ?
                             <DecompositionTreeGraph data={graphdata} />
                             : "Loading.."}

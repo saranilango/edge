@@ -16,7 +16,7 @@
 .ant-layout-header {
   top: 0;
   height: 40px !important;
-  display: flex;
+  /* display: flex; */
 }
 
 .ant-layout-footer {
@@ -199,3 +199,21 @@ top:40%;
   cursor: pointer;
   transition: all 0.2s;
 }
+
+.ant-collapse-header{
+  height: 40px !important;
+  display: flex;
+}
+
+.ant-checkbox-group {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-template-rows: auto auto;
+ }
+
+ .topnav-right{
+  float: right;
+  margin-top: -52px;
+  margin-right: -40px;
+  width: 15%;
+ }
