@@ -5,9 +5,8 @@ import { useState } from 'react';
 const { Panel } = Collapse;
 
 const Filter = (props) => {
-    const defaultdomainvalue=props.data.domain.map(e=>e.value);
     const defaultsubdomainvalue=props.data.subdomain.map(e=>e.value);
-        const [domainvalue,setdomainvalue]=useState(defaultdomainvalue);
+        const [domainvalue,setdomainvalue]=useState(props.data.domain);
         const [subdomainvalue,setsubdomainvalue]=useState(defaultsubdomainvalue);
         const onChangedomain = (e) => {
             setdomainvalue(e);
@@ -16,9 +15,6 @@ const Filter = (props) => {
             setsubdomainvalue(e);
             // console.log(`checked = ${e}`);
         };
-        // const handleChange = (value) => {
-        //     console.log(`selected ${value}`);
-        // };
     return (
         <>
             <>
@@ -33,9 +29,8 @@ const Filter = (props) => {
                                                 style={{
                                                     width: '100%',
                                                 }}
-                                                options={props.data.domain}
-                                                defaultValue={defaultdomainvalue}
-                                                onChange={onChangedomain}
+                                                options={domainvalue}
+                                                value={domainvalue}
                                             >
 
                                             </Checkbox.Group>
@@ -48,7 +43,7 @@ const Filter = (props) => {
                                                     width: '100%',
                                                 }}
                                                 options={props.data.subdomain}
-                                                defaultValue={defaultsubdomainvalue}
+                                                defaultValue={subdomainvalue}
                                                 onChange={onChangesubdomain}
                                             >
 
@@ -67,7 +62,7 @@ const Filter = (props) => {
                                                 <Option value="Default">Global View</Option>
                                                 <Option value="Global">Global</Option>
                                             </Select> */}
-                                            <Button type="primary" onClick={()=>{props.onsubmit(domainvalue,subdomainvalue)}}>Apply </Button>
+                                            <Button type="primary" onClick={()=>{props.onsubmit(subdomainvalue)}}>Apply </Button>
                                         {/* </Space> */}
                                     </Col>
                                 </Row>

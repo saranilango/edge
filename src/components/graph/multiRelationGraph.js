@@ -4,10 +4,10 @@ import { FlowAnalysisGraph } from '@ant-design/graphs';
 const DemoDecompositionTreeGraph = (props) => {
   // console.log(props.data);
   const data = props.data;
-  
   const config = {
     data,
-    autoFit: false,
+    autoFit: true,
+    fitCenter:false,
     layout: {
       rankdir: 'TB',
       ranksepFunc: () => 30,

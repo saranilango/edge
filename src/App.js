@@ -13,7 +13,7 @@ function App() {
   const [graphdata, setgraphdata] = useState(null);
   const [domainOptions, setdomainOptions] = useState(null);
   const [subdomainOptions, setsubdomainOptions] = useState(null);
-
+  const [dependencyData,setdependencyData] = useState(null);
   const onhandler = () => {
     isCollapseHandler(!isCollapse);
   }
@@ -21,54 +21,41 @@ function App() {
   const handleChange = (value) => {
     console.log(`selected ${value}`);
   };
-
+let dependencyDatas=[];
   useEffect(() => {
     //console.log("worked");
     fetch('http://localhost:8000/dps/list/')
         .then(data => data.json())
         .then(datas => {
             setgraphdata(datas);
-            let domain = [];
             let subdomain = [];
-            let tempdomain=[];
             let tempsubdomain=[];
             datas.nodes?.forEach(data => {
-                if (!tempdomain.includes(data.value.items[1].value.toString())) {
-                  tempdomain.push(data.value.items[1].value.toString());
-                    domain.push({value:data["domain-id"],label:data.value.items[1].value.toString()});
-                }
+                
                 if (!tempsubdomain.includes(data.value.items[2].value.toString())) {
                     tempsubdomain.push(data.value.items[2].value.toString());
                     subdomain.push({value:data["sub-domain-id"],label:data.value.items[2].value.toString()});
                 }
             });
-            domain.sort();
+            setdomainOptions(Object.keys(datas.domains));
+            setdependencyData(datas.domains);
             subdomain.sort();
-            setdomainOptions(domain);
             setsubdomainOptions(subdomain)
         })
 
 }, []);
-const ondomainChange=(curdomain)=>{
-  
-  setdomainOptions(curdomain);
-}
-const onsubdomainChange=(cursubdomain)=>{
-  setsubdomainOptions(cursubdomain);
-}
- const onsubmitFilter=(curdomain,cursubdomain)=>{
-  console.log(curdomain,cursubdomain);
-  let domainstring="";
-  curdomain.forEach(ele=>{
-   domainstring+=`domain=${ele}&`;
-  })
+
+ const onsubmitFilter=(cursubdomain)=>{
+ // console.log(curdomain,cursubdomain);
+ 
   let subdomainstring="";
   cursubdomain.forEach(ele=>{
-    subdomainstring+=`subdomain=${ele}&`;
+    subdomainstring+=`sub-domain=${ele}&`;
   })
-  fetch(`http://localhost:8000/dps/list/?${domainstring}${subdomainstring}`)
+  fetch(`http://localhost:8000/dps/list/?${subdomainstring.substring(0,subdomainstring.length-1)}`)
   .then(data => data.json())
   .then(datas => {
+    console.log(datas);
       setgraphdata(datas);
   })
  }
@@ -99,7 +86,7 @@ const onsubdomainChange=(cursubdomain)=>{
         </div>
       </Header> {graphdata&&domainOptions&&subdomainOptions?
       <>
-      <Filter data={{"domain":domainOptions,"subdomain":subdomainOptions}} onsubmit={onsubmitFilter} ondomainChange={ondomainChange} onsubdomainChange={onsubdomainChange}></Filter>
+      <Filter data={{"domain":domainOptions,"subdomain":subdomainOptions}} onsubmit={onsubmitFilter} dependencyData={dependencyData}></Filter>
      <Layout>
         <Content>
         <Dashboard data={graphdata} />
