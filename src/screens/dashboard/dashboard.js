@@ -53,7 +53,8 @@ function Dashboard() {
                     <div>
                         {graphdata ?
                             <DecompositionTreeGraph data={graphdata} />
-                            : "Loading.."}
+                            : 
+                            <div className='loading'><img src={SvgLogo} className="App-logo" alt="logo" /></div>}
                     </div>
                 </Card>
                 : <div className='loading'><img src={SvgLogo} className="App-logo" alt="logo" /></div>}
