@@ -46,16 +46,16 @@ const Filter = () => {
 
     }, []);
 
-    // const handleChange = (value) => {
-    //     console.log(`selected ${value}`);
-    // };
+    const onChange = (key) => {
+        console.log(key);
+      };
 
     return (
         <>
             <>
                 <Row>
                     <Col span={24}>
-                        <Collapse className="site-collapse-custom-collapse" expandIconPosition="end">
+                        <Collapse className="site-collapse-custom-collapse" expandIconPosition="end" defaultActiveKey={['1']} onChange={onChange}>
                             <Panel key="1" header="" style={{fontSize:"25px"}}>
                                 <Row>
                                     <Col span={8}>

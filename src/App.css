@@ -1,5 +1,13 @@
 @import '~antd/dist/antd.css';
 
+
+.card-bg-image {
+  background-image: url("./asset/istockphoto-1144573725-612x612.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity:1.5
+}
+
 .ant-layout {
   background: #fff;
 }
@@ -7,7 +15,7 @@
 .ant-layout-header,
 .ant-layout-footer {
   color: #fff;
-  background: #1890ff;
+  background: #0275d8 !important;
   position: sticky;
   width: 100%;
   z-index: 10;

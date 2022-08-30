@@ -49,7 +49,7 @@ function Dashboard() {
     return (
         <>
             {graphdata&&domainOptions.length>0&&subdomainOptions.length>0 ?
-                <Card className='card_layout'>
+                <Card className='card_layout card-bg-image'>
                     <div>
                         {graphdata ?
                             <DecompositionTreeGraph data={graphdata} />

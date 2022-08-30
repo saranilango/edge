@@ -35,14 +35,14 @@ function App() {
         <h2>Edge Dashboard</h2>
         <div className="topnav-right">
           <Select
-            defaultValue="Global View"
+            defaultValue="Data Product"
             style={{
               width: '100%',
             }}
             onChange={handleChange}
           >
-            <Option value="Default">Global View</Option>
-            <Option value="Global">Global</Option>
+            <Option value="Default">Data Produt</Option>
+            {/* <Option value="Global">Global</Option> */}
           </Select>
           {/* <Button shape="circle" icon={<UserOutlined />} /> */}
         </div>
