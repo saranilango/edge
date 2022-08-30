@@ -9,7 +9,6 @@ const Sidebar = () => {
     const [isfilter, setisfilter] = useState(true);
     const [isdomain, setisdomain] = useState(true);
     const [issubdomain, setissubdomain] = useState(true);
-    const [graphdata, setgraphdata] = useState(null);
     const [domainOptions, setdomainOptions] = useState([]);
     const [subdomainOptions, setsubdomainOptions] = useState([]);
 

@@ -7,10 +7,11 @@ const DemoDecompositionTreeGraph = (props) => {
   
   const config = {
     data,
-    autoFit: true,
+    autoFit: false,
     layout: {
       rankdir: 'TB',
       ranksepFunc: () => 30,
+      nodesepFunc: () => 60,
     },
     nodeCfg: {
       autoWidth:true,
