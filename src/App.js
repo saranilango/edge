@@ -35,11 +35,11 @@ function App() {
             datas.nodes?.forEach(data => {
                 if (!tempdomain.includes(data.value.items[1].value.toString())) {
                   tempdomain.push(data.value.items[1].value.toString());
-                    domain.push({value:data["domain-id"][0],label:data.value.items[1].value.toString()});
+                    domain.push({value:data["domain-id"],label:data.value.items[1].value.toString()});
                 }
                 if (!tempsubdomain.includes(data.value.items[2].value.toString())) {
                     tempsubdomain.push(data.value.items[2].value.toString());
-                    subdomain.push({value:data["sub-domain-id"][0],label:data.value.items[2].value.toString()});
+                    subdomain.push({value:data["sub-domain-id"],label:data.value.items[2].value.toString()});
                 }
             });
             domain.sort();
