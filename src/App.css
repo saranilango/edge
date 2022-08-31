@@ -1,21 +1,21 @@
 @import '~antd/dist/antd.css';
 
 
-.card-bg-image {
+/* .card-bg-image {
   background-image: url("./asset/istockphoto-1144573725-612x612.jpg");
   background-repeat: no-repeat;
   background-size: cover;
-  opacity:1.5
-}
+  opacity: 1.5
+} */
 
 .ant-layout {
-  background: #fff;
+  background: #d5d7fd;
 }
 
 .ant-layout-header,
 .ant-layout-footer {
   color: #fff;
-  background: #0275d8 !important;
+  background: #202342 !important;
   position: sticky;
   width: 100%;
   z-index: 10;
@@ -23,7 +23,10 @@
 
 .ant-layout-header {
   top: 0;
-  height: 40px !important;
+  height: 50px !important;
+  padding: 0 36px;
+  display: flex;
+  justify-content: space-between;
   /* display: flex; */
 }
 
@@ -41,8 +44,6 @@
 
 .ant-layout-header h2 {
   margin: 0;
-  width: 20% !important;
-  line-height: 40px !important;
   color: #fff;
 }
 
@@ -62,7 +63,7 @@
 }
 
 .ant-layout-content {
-  margin: 50px !important;
+  margin: 26px !important;
 }
 
 .rbutton {
@@ -122,13 +123,15 @@
   color: #1890ff;
 }
 
-.card_layout{
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+.card_layout {
+  /* box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; */
   border: none;
   outline: none;
+  border-radius: 10px;
 }
 
-.decompose-tree,.organization-tree{
+.decompose-tree,
+.organization-tree {
   border: 1px solid rgba(0, 0, 0, 0.24);
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 4px;
   padding: 5px;
@@ -139,14 +142,14 @@
 }
 
 .loading {
-display: flex;
-justify-content: center;
-height: 400px;
-
+  display: flex;
+  justify-content: center;
+  height: 400px;
 }
-.loading img{
-position: absolute;
-top:40%;
+
+.loading img {
+  position: absolute;
+  top: 40%;
   height: 100px;
   width: 100px;
 }
@@ -160,16 +163,20 @@ top:40%;
   border: 1px solid rgba(0, 0, 0, 0.24);
 
 }
-.left_box,.right_box{
+
+.left_box,
+.right_box {
   width: 50% !important;
   padding: 5px;
   height: 100%;
 }
-.left_box{
+
+.left_box {
   border-right: 1px solid rgba(0, 0, 0, 0.24);
 }
 
-.domain_checkboxs,.subdomain_checkboxs{
+.domain_checkboxs,
+.subdomain_checkboxs {
   border: 1px solid rgba(0, 0, 0, 0.24);
   padding: 5px;
   width: 100% !important;
@@ -177,7 +184,7 @@ top:40%;
   overflow: auto;
 }
 
-.subheading{
+.subheading {
   font-weight: 700;
 }
 
@@ -189,9 +196,9 @@ top:40%;
   background: #f0f2f5;
 }
 
-.sidebarh2{
-    text-align: center;
-    font-weight: bolder;
+.sidebarh2 {
+  text-align: center;
+  font-weight: bolder;
 }
 
 .ant-layout-sider-trigger {
@@ -208,20 +215,90 @@ top:40%;
   transition: all 0.2s;
 }
 
-.ant-collapse-header{
+.ant-collapse-header {
   height: 40px !important;
   display: flex;
 }
 
-.ant-checkbox-group {
+/* .ant-checkbox-group {
   display: grid;
   grid-template-columns: auto auto auto;
   grid-template-rows: auto auto;
- }
+} */
 
- .topnav-right{
-  float: right;
-  margin-top: -52px;
-  margin-right: -40px;
-  width: 15%;
- }
+.topnav-right {
+  width: 225px;
+}
+
+header h2 {
+  font-size: 20px;
+  line-height: 50px;
+}
+
+header h2 label {
+  font-weight: 200;
+}
+
+.topnav-right .ant-select {
+  position: relative;
+  top: -6px;
+}
+
+.filterOptionArea {
+  background-color: #2d325a;
+  display: flex;
+  padding: 5px 16px;
+  min-height: 51px;
+}
+
+.filterOptionArea .ant-checkbox-wrapper {
+  color: #fff;
+}
+
+.checkBoxGroup {
+  width: calc(100% - 125px);
+  display: flex;
+  align-items: center;
+  visibility: hidden;
+}
+
+.checkBoxGroup>div {
+  width: 50%;
+}
+
+.filterOptionArea button {
+  border-radius: 25px;
+  visibility: hidden;
+}
+
+.btnGrp {
+  display: flex;
+}
+
+.btnGrp div {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: #474c6c;
+  margin-left: 8px;
+  margin-top: 4px;
+}
+
+.btnGrp div svg {
+  position: relative;
+  left: 5px;
+  transform: rotate(-181deg);
+  top: 5px;
+}
+
+.filterOptionArea.show .btnGrp div svg {
+  position: relative;
+  left: -2px;
+  transform: rotate(0deg);
+  top: 0px;
+}
+
+.filterOptionArea.show button,
+.filterOptionArea.show .checkBoxGroup {
+  visibility: visible;
+}

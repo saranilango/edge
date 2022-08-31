@@ -6,72 +6,76 @@ const { Panel } = Collapse;
 
 const Filter = (props) => {
     console.log(props.data.totalSubdomain);
-    const defaultsubdomainvalue=props.data.subdomain.map(e=>e.value);
-        const [domainvalue,setdomainvalue]=useState(props.data.domain);
-        const [subdomainvalue,setsubdomainvalue]=useState(defaultsubdomainvalue);
-        const onChangedomain = (e) => {
-            setdomainvalue(e);
-        };
-        const onChangesubdomain = (e) => {
-            setsubdomainvalue(e);
-            // console.log(`checked = ${e}`);
-        };
+    const defaultsubdomainvalue = props.data.subdomain.map(e => e.value);
+    const [domainvalue, setdomainvalue] = useState(props.data.domain);
+    const [subdomainvalue, setsubdomainvalue] = useState(defaultsubdomainvalue);
+    const [showTab, setshowTab] = useState(true);
+    const onChangedomain = (e) => {
+        setdomainvalue(e);
+    };
+    const onChangesubdomain = (e) => {
+        setsubdomainvalue(e);
+        // console.log(`checked = ${e}`);
+    };
+    const showfilter = ()=>{
+        console.log('setshowTab:', showTab);
+        setshowTab(!showTab)
+    }
     return (
         <>
-            <>
-                <Row>
-                    <Col span={24}>
-                        <Collapse className="site-collapse-custom-collapse" expandIconPosition="end" defaultActiveKey={['1']} >
-                            <Panel key="1" header="" style={{fontSize:"25px"}}>
-                                <Row>
-                                    <Col span={8}>
+            <div className={showTab ? 'filterOptionArea': 'filterOptionArea show'}>
+                <div className='checkBoxGroup'>
+                    <div>
+                        <Checkbox.Group
+                            style={{
+                                width: '100%',
+                            }}
+                            options={domainvalue}
+                            value={domainvalue}
+                        >
+
+                        </Checkbox.Group>
+                    </div>
+                    <div>
+                        <Checkbox.Group
+                            style={{
+                                width: '100%',
+                            }}
+                            options={props.data.totalSubdomain}
+                            defaultValue={subdomainvalue}
+                            onChange={onChangesubdomain}
+                        >
+
+                        </Checkbox.Group>
+                    </div>
+                </div>
+                <div className='btnGrp'>
+                    <Button type="primary" onClick={() => { props.onsubmit(subdomainvalue) }}>Apply </Button>
+                    <div onClick={showfilter}>
+                        <svg xmlns="http://www.w3.org/2000/svg" height="22" width="22" viewBox="0 0 36 36"><path fill="#ffffff" d="m24 30-10-9.95h20Z"/></svg></div>
+                </div>
+            </div>
+            {/* <Row>
+                <Col span={24}>
+                    <Collapse className="site-collapse-custom-collapse" expandIconPosition="end" defaultActiveKey={['1']} >
+                        <Panel key="1" header="" style={{ fontSize: "25px" }}>
+                            <Row>
+                                <Col span={8}>
                                     <Space>
-                                            <Checkbox.Group
-                                                style={{
-                                                    width: '100%',
-                                                }}
-                                                options={domainvalue}
-                                                value={domainvalue}
-                                            >
 
-                                            </Checkbox.Group>
-                                        </Space>
-                                    </Col>
-                                    <Col span={8}>
-                                        <Space>
-                                            <Checkbox.Group
-                                                style={{
-                                                    width: '100%',
-                                                }}
-                                                options={props.data.totalSubdomain}
-                                                defaultValue={subdomainvalue}
-                                                onChange={onChangesubdomain}
-                                            >
+                                    </Space>
+                                </Col>
+                                <Col span={8}>
+                                    <Space>
 
-                                            </Checkbox.Group>
-                                        </Space>
-                                    </Col>
-                                    <Col span={8}>
-                                        {/* <Space> */}
-                                            {/* <Select
-                                                defaultValue="Global View"
-                                                style={{
-                                                    width: '100%',
-                                                }}
-                                                onChange={handleChange}
-                                            >
-                                                <Option value="Default">Global View</Option>
-                                                <Option value="Global">Global</Option>
-                                            </Select> */}
-                                            <Button type="primary" onClick={()=>{props.onsubmit(subdomainvalue)}}>Apply </Button>
-                                        {/* </Space> */}
-                                    </Col>
-                                </Row>
-                            </Panel>
-                        </Collapse>
-                    </Col>
-                </Row>
-            </>
+                                    </Space>
+                                </Col>
+                                
+                            </Row>
+                        </Panel>
+                    </Collapse>
+                </Col>
+            </Row> */}
         </>
     )
 }
