@@ -88,10 +88,8 @@ function App() {
             }}
             onChange={handleChange}
           >
-            <Option value="Default">Data Produt</Option>
-            {/* <Option value="Global">Global</Option> */}
+            <Option value="Default">Data Product</Option>
           </Select>
-          {/* <Button shape="circle" icon={<UserOutlined />} /> */}
         </div>
       </Header> {graphdata && domainOptions && subdomainOptions ?
         <>
