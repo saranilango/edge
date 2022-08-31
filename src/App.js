@@ -13,6 +13,7 @@ function App() {
   const [graphdata, setgraphdata] = useState(null);
   const [domainOptions, setdomainOptions] = useState(null);
   const [subdomainOptions, setsubdomainOptions] = useState(null);
+  const [totalsubdomainOptions, settotalsubdomainOptions] = useState(null);
   const [dependencyData,setdependencyData] = useState(null);
   const onhandler = () => {
     isCollapseHandler(!isCollapse);
@@ -24,20 +25,28 @@ function App() {
 let dependencyDatas=[];
   useEffect(() => {
     //console.log("worked");
-    fetch('http://localhost:8000/dps/list/')
+    fetch('http://tst.kumaran.com/dps/list/')
         .then(data => data.json())
         .then(datas => {
             setgraphdata(datas);
             let subdomain = [];
             let tempsubdomain=[];
             datas.nodes?.forEach(data => {
-                
                 if (!tempsubdomain.includes(data.value.items[2].value.toString())) {
                     tempsubdomain.push(data.value.items[2].value.toString());
-                    subdomain.push({value:data["sub-domain-id"],label:data.value.items[2].value.toString()});
+                    subdomain.push({value:data["sub-domain-id"].toString(),label:data.value.items[2].value.toString()});
                 }
             });
             setdomainOptions(Object.keys(datas.domains));
+            let totalSubdomain=[];
+            Object.keys(datas.domains).forEach(Element=>{
+              if(datas.domains[Element].length>0){
+                datas.domains[Element].forEach(element=>{
+                  totalSubdomain.push({value:element[0],label:element[1]})
+                })
+              }
+            })
+            settotalsubdomainOptions(totalSubdomain);
             setdependencyData(datas.domains);
             subdomain.sort();
             setsubdomainOptions(subdomain)
@@ -52,7 +61,7 @@ let dependencyDatas=[];
   cursubdomain.forEach(ele=>{
     subdomainstring+=`sub-domain=${ele}&`;
   })
-  fetch(`http://localhost:8000/dps/list/?${subdomainstring.substring(0,subdomainstring.length-1)}`)
+  fetch(`http://tst.kumaran.com/dps/list/?${subdomainstring.substring(0,subdomainstring.length-1)}`)
   .then(data => data.json())
   .then(datas => {
     console.log(datas);
@@ -86,7 +95,7 @@ let dependencyDatas=[];
         </div>
       </Header> {graphdata&&domainOptions&&subdomainOptions?
       <>
-      <Filter data={{"domain":domainOptions,"subdomain":subdomainOptions}} onsubmit={onsubmitFilter} dependencyData={dependencyData}></Filter>
+      <Filter data={{"domain":domainOptions,"subdomain":subdomainOptions,"totalSubdomain":totalsubdomainOptions}} onsubmit={onsubmitFilter} dependencyData={dependencyData}></Filter>
      <Layout>
         <Content>
         <Dashboard data={graphdata} />

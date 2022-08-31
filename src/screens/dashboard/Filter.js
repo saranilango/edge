@@ -5,6 +5,7 @@ import { useState } from 'react';
 const { Panel } = Collapse;
 
 const Filter = (props) => {
+    console.log(props.data.totalSubdomain);
     const defaultsubdomainvalue=props.data.subdomain.map(e=>e.value);
         const [domainvalue,setdomainvalue]=useState(props.data.domain);
         const [subdomainvalue,setsubdomainvalue]=useState(defaultsubdomainvalue);
@@ -42,7 +43,7 @@ const Filter = (props) => {
                                                 style={{
                                                     width: '100%',
                                                 }}
-                                                options={props.data.subdomain}
+                                                options={props.data.totalSubdomain}
                                                 defaultValue={subdomainvalue}
                                                 onChange={onChangesubdomain}
                                             >
