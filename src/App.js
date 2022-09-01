@@ -15,12 +15,14 @@ function App() {
   const [subdomainOptions, setsubdomainOptions] = useState(null);
   const [totalsubdomainOptions, settotalsubdomainOptions] = useState(null);
   const [dependencyData, setdependencyData] = useState(null);
+  const [dropdownstate,setdropdownstate] = useState("default");
   const onhandler = () => {
     isCollapseHandler(!isCollapse);
   }
 
   const handleChange = (value) => {
     console.log(`selected ${value}`);
+    setdropdownstate(value);
   };
   let dependencyDatas = [];
   useEffect(() => {
@@ -82,13 +84,15 @@ function App() {
         <h2>EDGE <label>Dashboard</label></h2>
         <div className="topnav-right">
           <Select
-            defaultValue="Data Product"
+            defaultValue="default"
             style={{
               width: '100%',
             }}
             onChange={handleChange}
           >
-            <Option value="Default">Data Product</Option>
+            <Option value="default">Data Product</Option>
+            <Option value="carouselview">Data Product in Error</Option>
+            {/* <Option value="Global">Global</Option> */}
           </Select>
         </div>
       </Header> {graphdata && domainOptions && subdomainOptions ?
@@ -96,7 +100,7 @@ function App() {
           <Filter data={{ "domain": domainOptions, "subdomain": subdomainOptions, "totalSubdomain": totalsubdomainOptions }} onsubmit={onsubmitFilter} dependencyData={dependencyData}></Filter>
           <Layout>
             <Content>
-              <Dashboard data={graphdata} />
+              <Dashboard data={graphdata} dropdownstate={dropdownstate}/>
             </Content>
           </Layout></> : <div className='loading'><img src={SvgLogo} className="App-logo" alt="logo" /></div>}
 

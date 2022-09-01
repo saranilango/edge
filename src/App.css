@@ -7,7 +7,10 @@
   background-size: cover;
   opacity: 1.5
 } */
+body{
+  background: #d5d7fd !important;
 
+}
 .ant-layout {
   background: #d5d7fd !important;
 }
@@ -152,7 +155,7 @@
 .loading {
   display: flex;
   justify-content: center;
-  height: 400px;
+  height: 650px;
 }
 
 .loading img {
@@ -319,3 +322,15 @@ header h2 label {
   transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
   color: white !important;
 }
+
+.cur{
+  height: 400px;
+  background-color: #474c6c;
+  width: 100%;
+  padding: 20px;
+}
+
+.cancur{
+  height: 340px;
+}
+
