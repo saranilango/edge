@@ -258,11 +258,12 @@ header h2 label {
 .filterOptionArea {
   background-color: #2d325a;
   display: flex;
-  padding: 5px 16px;
+  padding: 12px 24x;
   min-height: 51px;
+  color:#fff;
 }
 
-.filterOptionArea .ant-checkbox-wrapper {
+.filterOptionArea .ant-checkbox-wrapper, .filterOptionArea .ant-tabs-tab-btn {
   color: #fff;
 }
 
@@ -271,11 +272,16 @@ header h2 label {
   display: flex;
   align-items: center;
   visibility: hidden;
+  padding: 0 22px;
+}
+.checkBoxGroup .ant-tabs{
+  width:100%;
+  margin-bottom: 8px;
 }
 
-.checkBoxGroup>div {
+/* .checkBoxGroup>div {
   width: 50%;
-}
+} */
 
 .filterOptionArea button {
   border-radius: 25px;
@@ -284,11 +290,13 @@ header h2 label {
 
 .btnGrp {
   display: flex;
+  justify-content: center;
+  align-items: center
 }
 
 .btnGrp div {
-  width: 25px;
-  height: 25px;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
   background: #474c6c;
   margin-left: 8px;
@@ -297,9 +305,9 @@ header h2 label {
 
 .btnGrp div svg {
   position: relative;
-  left: 5px;
+  left: 10px;
   transform: rotate(-181deg);
-  top: 5px;
+  top: 10px;
 }
 
 .filterOptionArea.show .btnGrp div svg {
@@ -322,15 +330,17 @@ header h2 label {
   transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
   color: white !important;
 }
-
+.ant-select-arrow{
+  color:#fff !important;
+}
 .cur{
-  height: 400px;
+  height: calc(100vh - 210px);
   background-color: #474c6c;
   width: 100%;
   padding: 20px;
 }
 
-.cancur{
+/* .cancur{
   height: 340px;
-}
+} */
 

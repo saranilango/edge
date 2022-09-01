@@ -91,7 +91,7 @@ function App() {
             onChange={handleChange}
           >
             <Option value="default">Data Product</Option>
-            <Option value="carouselview">Data Product in Error</Option>
+            <Option value="carouselview">Data Product Carousel</Option>
             {/* <Option value="Global">Global</Option> */}
           </Select>
         </div>
