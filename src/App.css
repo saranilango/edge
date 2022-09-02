@@ -258,9 +258,11 @@ header h2 label {
 .filterOptionArea {
   background-color: #2d325a;
   display: flex;
+  flex-direction: column;
   padding: 12px 24x;
   min-height: 51px;
   color:#fff;
+  width: 100%;
 }
 
 .filterOptionArea .ant-checkbox-wrapper, .filterOptionArea .ant-tabs-tab-btn {
@@ -271,7 +273,7 @@ header h2 label {
   width: calc(100% - 125px);
   display: flex;
   align-items: center;
-  visibility: hidden;
+  display: none;
   padding: 0 22px;
 }
 .checkBoxGroup .ant-tabs{
@@ -285,7 +287,7 @@ header h2 label {
 
 .filterOptionArea button {
   border-radius: 25px;
-  visibility: hidden;
+  display: none;
 }
 
 .btnGrp {
@@ -303,23 +305,17 @@ header h2 label {
   margin-top: 4px;
 }
 
-.btnGrp div svg {
+.upsvg {
   position: relative;
-  left: 10px;
   transform: rotate(-181deg);
-  top: 10px;
+  top: 12px;
+  left: 10px;
 }
 
-.filterOptionArea.show .btnGrp div svg {
-  position: relative;
-  left: -2px;
-  transform: rotate(0deg);
-  top: 0px;
-}
 
 .filterOptionArea.show button,
 .filterOptionArea.show .checkBoxGroup {
-  visibility: visible;
+  display: block;
 }
 
 .ant-select:not(.ant-select-customize-input) .ant-select-selector {
@@ -337,10 +333,36 @@ header h2 label {
   height: calc(100vh - 210px);
   background-color: #474c6c;
   width: 100%;
-  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 20px;
 }
 
-/* .cancur{
-  height: 340px;
-} */
+.cancur{
+  height: calc(100vh - 200px);
+}
+
+.filtertop{
+  margin-top: 5px;
+  display: flex;
+  height: 25px;
+  width: 100%;
+  overflow: hidden;
+}
+.filtertop span{
+  font-weight: 600;
+  width: 90%;
+  margin-left: 35px;
+  font-size: 17px;
+  margin-top: 5px;
+}
+.filtertop .toggle{
+  width: 10%;
+  cursor: pointer;
+  text-align: center;
+
+}
+.filcontent{
+  display: flex;
+  gap: 10px;
+}
 

@@ -13,10 +13,10 @@ function Dashboard(props) {
         textAlign: 'center',
         background: '#364d79',
     };
-    let fg = [];
-    [1, 2, 3, 4].map(e => {
-        fg.push(<div style={contentStyle} className="cancur">
-            <DecompositionTreeGraph data={props.data} />
+    let curdata = [];
+    props.carouseldata?.forEach((e,i) => {
+        curdata.push(<div style={contentStyle} className="cancur" key={i}>
+            <DecompositionTreeGraph data={e}  />
         </div>)
     })
     return (
@@ -31,7 +31,7 @@ function Dashboard(props) {
                     </div>
                 </Card> :
                 <Carousel dotPosition={"bottom"} className="cur" dots={{ className: "colr" }}>
-                    {fg}
+                    {curdata}
                 </Carousel>
             }
         </>

@@ -16,15 +16,24 @@ function App() {
   const [totalsubdomainOptions, settotalsubdomainOptions] = useState(null);
   const [dependencyData, setdependencyData] = useState(null);
   const [dropdownstate,setdropdownstate] = useState("default");
+  const [carouseldata,setcarouseldata] = useState([]);
+
+
   const onhandler = () => {
     isCollapseHandler(!isCollapse);
   }
 
   const handleChange = (value) => {
-    console.log(`selected ${value}`);
+    // console.log(`selected ${value}`);
     setdropdownstate(value);
+    if(value==="carouselview"){
+      fetch('http://tst.kumaran.com/dps/down_view/')
+      .then(data => data.json())
+      .then(datas => {
+        setcarouseldata(datas.data);
+      })
+    }
   };
-  let dependencyDatas = [];
   useEffect(() => {
     //console.log("worked");
     fetch('http://tst.kumaran.com/dps/list/')
@@ -57,7 +66,7 @@ function App() {
   }, []);
 
   const onsubmitFilter = (cursubdomain) => {
-    // console.log(curdomain,cursubdomain);
+    // console.log(cursubdomain);
 
     let subdomainstring = "";
     cursubdomain.forEach(ele => {
@@ -66,7 +75,7 @@ function App() {
     fetch(`http://tst.kumaran.com/dps/list/?${subdomainstring.substring(0, subdomainstring.length - 1)}`)
       .then(data => data.json())
       .then(datas => {
-        console.log(datas);
+        // console.log(datas);
         setgraphdata(datas);
       })
   }
@@ -91,16 +100,16 @@ function App() {
             onChange={handleChange}
           >
             <Option value="default">Data Product</Option>
-            <Option value="carouselview">Data Product Carousel</Option>
+            <Option value="carouselview">Data Product in Error</Option>
             {/* <Option value="Global">Global</Option> */}
           </Select>
         </div>
       </Header> {graphdata && domainOptions && subdomainOptions ?
         <>
-          <Filter data={{ "domain": domainOptions, "subdomain": subdomainOptions, "totalSubdomain": totalsubdomainOptions }} onsubmit={onsubmitFilter} dependencyData={dependencyData}></Filter>
+          <Filter data={{ "domain": domainOptions, "subdomain": subdomainOptions, "totalSubdomain": totalsubdomainOptions,dependencyData:dependencyData }} onsubmit={onsubmitFilter} dependencyData={dependencyData}></Filter>
           <Layout>
             <Content>
-              <Dashboard data={graphdata} dropdownstate={dropdownstate}/>
+              <Dashboard data={graphdata} carouseldata={carouseldata} dropdownstate={dropdownstate}/>
             </Content>
           </Layout></> : <div className='loading'><img src={SvgLogo} className="App-logo" alt="logo" /></div>}
 

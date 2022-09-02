@@ -6,7 +6,6 @@ const DemoDecompositionTreeGraph = (props) => {
   const data = props.data;
   const config = {
     data,
-    autoFit: true,
     fitCenter:false,
     layout: {
       rankdir: 'TB',
