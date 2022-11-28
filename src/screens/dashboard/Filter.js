@@ -88,9 +88,9 @@ const Filter = (props) => {
  
                         </div> */}
                     <div className="filter-justify">
-                        <Radio.Group onChange={onChange} value={direction} optionType="button">
-                            <Radio value='LR'>Left To Right</Radio>
-                            <Radio value='TB'>Tob To Bottom</Radio>
+                        <Radio.Group onChange={onChange} value={direction}>
+                            <Radio value='LR'>Horizontal</Radio>
+                            <Radio value='TB'>Vertical</Radio>
                         </Radio.Group>
                         <Button
                             type="primary"

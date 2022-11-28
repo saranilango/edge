@@ -17,7 +17,7 @@ body{
 
 .ant-layout-header{
   color: #fff !important;
-  background: #202342 !important;
+  background: #1B1D36 !important;
   position: sticky !important;
   width: 100% !important;;
   z-index: 10 !important;
@@ -28,7 +28,7 @@ body{
 }
 .ant-layout-footer {
   color: #fff !important;
-  background: #202342 !important;
+  background: #1B1D36 !important;
   position: fixed !important;
   width: 100% !important;
   z-index: 10 !important;
@@ -221,12 +221,6 @@ body{
   display: flex;
 }
 
-/* .ant-checkbox-group {
-  display: grid;
-  grid-template-columns: auto auto auto;
-  grid-template-rows: auto auto;
-} */
-
 .topnav-right {
   width: 225px;
 }
@@ -246,7 +240,7 @@ header h2 label {
 }
 
 .filterOptionArea {
-  background-color: #2d325a;
+  background-color: #1B1D36;
   display: flex;
   flex-direction: column;
   padding: 12px 24x;
@@ -370,4 +364,16 @@ header h2 label {
   justify-content: space-between;
   display: flex;
   margin: 10px;
+}
+
+.ant-radio-wrapper {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  color: white;
+  font-size: 14px;
+  display: inline-flex;
+  align-items: baseline;
+  margin-right: 8px;
+  cursor: pointer;
 }
