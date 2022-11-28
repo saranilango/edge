@@ -29,7 +29,7 @@ const Filter = (props) => {
     // const defaultsubdomainvalue = props.data.subdomain.map((e) => e.value);
     // const [domainvalue, setdomainvalue] = useState(props.data.domain);
     const [subdomainvalue, setsubdomainvalue] = useState(null);
-   
+
     // const onChangedomain = (e) => {
     //     setdomainvalue(e);
     // };
@@ -62,9 +62,8 @@ const Filter = (props) => {
     };
     return (
         <>
-
             <div className="filterOptionArea show">
-                <div className="filtertop">
+                {/* <div className="filtertop">
                     <span>{!showTab ? "Filter" : ""}</span>
                     <div className={showTab ? "toggle upsvg" : "toggle"} onClick={showfilter}>
                         <svg
@@ -76,10 +75,9 @@ const Filter = (props) => {
                             <path fill="#ffffff" d="m24 30-10-9.95h20Z" />
                         </svg>
                     </div>
-                </div>
-                <div className="filcontent">
-                    {showTab ? <>
-                        {/* <div className="checkBoxGroup">
+                </div> */}
+                {showTab ? <>
+                    {/* <div className="checkBoxGroup">
                             <Tabs>
                                 {domainKeys.map((ele, index) => (
                                     <TabPane tab={ele} key={index}>
@@ -89,26 +87,23 @@ const Filter = (props) => {
                             </Tabs>
  
                         </div> */}
-                        <div className="checkBoxGroup">
-                            <Radio.Group onChange={onChange} value={direction} optionType="button">
-                                <Radio value='LR'>Left To Right</Radio>
-                                <Radio value='TB'>Tob To Bottom</Radio>
-                            </Radio.Group>
-                        </div>
-                        <div className="btnGrp">
-                            <Button
-                                type="primary"
-                                onClick={() => {
-                                    props.onsubmit(direction);
-                                }}
-                            >
-                                Apply{" "}
-                            </Button>
-                        </div></> : ""}
-                    <br></br>
-                </div>
+                    <div className="filter-justify">
+                        <Radio.Group onChange={onChange} value={direction} optionType="button">
+                            <Radio value='LR'>Left To Right</Radio>
+                            <Radio value='TB'>Tob To Bottom</Radio>
+                        </Radio.Group>
+                        <Button
+                            type="primary"
+                            onClick={() => {
+                                props.onsubmit(direction);
+                            }}
+                        >
+                            Apply{" "}
+                        </Button>
+                    </div>
+                </> : ""}
+                <br></br>
             </div>
-
         </>
     );
 };
