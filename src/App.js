@@ -1,9 +1,9 @@
 import './App.css';
-import { Layout, Select } from 'antd';
+import { Layout, Select, Button, Space } from 'antd';
 import SvgLogo from "./loader.svg";
 import React, { useState, useEffect } from 'react';
 import Dashboard from './screens/dashboard/dashboard.js'
-import { MenuUnfoldOutlined } from '@ant-design/icons';
+import { MenuUnfoldOutlined, SearchOutlined, DownOutlined } from '@ant-design/icons';
 import Filter from './screens/dashboard/Filter.js'
 import RadialTreeGraphs from './components/graph/RadialTreeGraph';
 const { Header, Footer, Content } = Layout;
@@ -19,7 +19,8 @@ function App() {
   const [dropdownstate, setdropdownstate] = useState("default");
   const [carouseldata, setcarouseldata] = useState([]);
   const [graphDirection, setGraphDirection] = useState(null);
-
+  const [layoutGraphDirection, setlayoutGraphDirection] = useState(null);
+  const [showTab, setshowTab] = useState(true);
 
   const onhandler = () => {
     isCollapseHandler(!isCollapse);
@@ -70,6 +71,7 @@ function App() {
   const onsubmitFilter = (filterData) => {
     console.log("values ", filterData);
     setGraphDirection(filterData);
+    setlayoutGraphDirection(filterData);
     // let subdomainstring = "";
     // cursubdomain.forEach(ele => {
     //   subdomainstring += `sub-domain=${ele}&`;
@@ -88,11 +90,22 @@ function App() {
       </>
     )
   }
+  const showfilter = () => {
+    console.log("setshowTab:", showTab);
+    setshowTab(!showTab);
+  };
   return (
 
     <Layout>
       <Header>
-        <h2>EDGE <label>Dashboard</label></h2>
+        <Space wrap>
+        <div> <h2>EDGE <label>Dashboard</label></h2></div>
+        <div>
+          <Button type="primary">
+            Enter Filters
+          </Button>
+        </div>
+        </Space>
         {/* <div className="topnav-right">
           <Select
             defaultValue="default"
@@ -116,12 +129,12 @@ function App() {
               <RadialTreeGraphs />
             </Content>
           </Layout></> : <div className='loading'><img src={SvgLogo} className="App-logo" alt="logo" /></div>} */}
-          <Filter  data={{"direction": graphDirection}} onsubmit={onsubmitFilter}></Filter>
-          <Layout>
-            <Content>
-              <RadialTreeGraphs data={{"graphDirection": graphDirection}}/>
-            </Content>
-          </Layout>
+      <Filter data={{ "direction": graphDirection }} onsubmit={onsubmitFilter}></Filter>
+      <Layout>
+        <Content>
+          <RadialTreeGraphs data={{ "graphDirection": graphDirection, "layoutGraphDirection": layoutGraphDirection }} />
+        </Content>
+      </Layout>
       <Footer></Footer>
     </Layout>
   );

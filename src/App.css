@@ -37,7 +37,7 @@ body{
   height: 50px !important;
   padding: 0 36px;
   display: flex;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   /* display: flex; */
 }
 
@@ -261,8 +261,15 @@ header h2 label {
   flex-direction: column;
   padding: 12px 24x;
   min-height: 51px;
-  color:#fff;
+  color: #fff;
   width: 100%;
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  transform: translate(-50%, -17%);
+  z-index: 100;
+  max-width: 80%;
+  margin: 0 auto;
 }
 
 .filterOptionArea .ant-checkbox-wrapper, .filterOptionArea .ant-tabs-tab-btn {
@@ -365,4 +372,7 @@ header h2 label {
   display: flex;
   gap: 10px;
 }
-
+.ant-layout {
+  background: #d5d7fd !important;
+  position: relative;
+}

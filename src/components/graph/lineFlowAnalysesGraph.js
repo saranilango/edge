@@ -1,4 +1,4 @@
-import React , { useState, useEffect }from 'react';
+import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import { FlowAnalysisGraph } from '@ant-design/graphs';
 const data = {
@@ -52,12 +52,12 @@ const data = {
             source: '0',
             target: '2'
         }
-    ],
-  };
+    ]
+};
 const config = {
     data,
     layout: {
-
+        rankdir: "LR"
     },
     nodeCfg: {
         items: {
@@ -133,16 +133,21 @@ const config = {
         };
     },
     behaviors: ['drag-canvas', 'scroll-canvas', 'drag-node'],
-  };
-  
-const DemoFlowAnalysisGraph = (props) => {
-    const [dataConfig, setDataConfig] = useState(config)
-  useEffect(() => {
-    console.log('props in flow analyses:', props);
-    console.log('dataConfig:', dataConfig);
-    dataConfig.layout.rankdir = props.data.flowdirection;
-});
-  return <FlowAnalysisGraph {...config} />;
 };
 
-export default  DemoFlowAnalysisGraph
+const LineFlowAnalysisGraph = (props) => {
+    const [dataConfig, setDataConfig] = useState(config)
+    useEffect(() => {
+        console.log('props in flow analyses:', props);
+        console.log('dataConfig:', dataConfig);
+        // dataConfig.layout.rankdir = props.data.flowdirection;
+        // setDataConfig(dataConfig);  
+    });
+    return (
+        <>
+            <FlowAnalysisGraph {...config} />
+        </>
+    );
+};
+
+export default LineFlowAnalysisGraph

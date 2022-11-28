@@ -1,13 +1,15 @@
 
 /* eslint-disable */
 import React, { useState, useEffect } from 'react';
-import ReactDOM from 'react-dom';
 import { RadialTreeGraph } from '@ant-design/graphs';
-import DemoFlowAnalysisGraph from './flowAnalysesGraph';
+import LineFlowAnalysisGraph from './lineFlowAnalysesGraph';
+import LayoutFlowAnalysisGraph from './layoutFlowAnalysesGraph';
 import { Button } from 'antd';
+
 const RadialTreeGraphs = (props) => {
     const [selectednode, setSelectednode] = useState([]);
     const [isRadial, setisRadial] = useState(true);
+    const [isLineGraph, setisLineGraph] = useState(true);
 
     const themeColor = '#73B3D1';
     const radialdata = {
@@ -125,7 +127,12 @@ const RadialTreeGraphs = (props) => {
     };
 
     useEffect(() => {
-        console.log('selectednode:', selectednode); 
+        console.log('selectednode in radial:', props.data.graphDirection);
+        if(props.data.graphDirection == "TB"){
+            setisLineGraph(false);
+        } else {
+            setisLineGraph(true)
+        }
     });
     function setGotoRadial() {
         setisRadial(true)
@@ -137,7 +144,11 @@ const RadialTreeGraphs = (props) => {
                     <RadialTreeGraph {...radialConfig} />
                 </div> :
                 <div>
-                    <DemoFlowAnalysisGraph data={{"flowdirection": props.data.graphDirection}}/>
+                    {isLineGraph ?
+                        <LineFlowAnalysisGraph data={{ "flowdirection": props.data.graphDirection }} />
+                        :
+                        <LayoutFlowAnalysisGraph data={{ "layoutGraphDirection": props.data.layoutGraphDirection }} />
+                    }
                     <div><Button type="primary" onClick={setGotoRadial}>Back</Button></div>
                 </div>
             }
