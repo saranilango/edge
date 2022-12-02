@@ -1,5 +1,5 @@
 @import '~antd/dist/antd.css';
-
+@import 'react-tabs/style/react-tabs.css';
 
 /* .card-bg-image {
   background-image: url("./asset/istockphoto-1144573725-612x612.jpg");
@@ -363,7 +363,7 @@ header h2 label {
 .filter-justify {
   justify-content: space-between;
   display: flex;
-  margin: 10px;
+  margin: 5px;
 }
 
 .ant-radio-wrapper {
@@ -376,4 +376,28 @@ header h2 label {
   align-items: baseline;
   margin-right: 8px;
   cursor: pointer;
+}
+
+.modal-style {
+  position: absolute !important;
+    inset: 50% auto auto 50% !important;
+    border: 1px solid rgb(204, 204, 204);
+    background: rgb(255 254 254);
+    overflow: auto !important;
+    border-radius: 4px !important;
+    outline: none !important;
+    padding: 21px !important;
+    margin-right: -50% !important;
+    transform: translate(-50%, -50%);
+    width: 1000px !important;
+    min-height: 80% !important;
+}
+.primary-color{
+  color: #1890ff !important;
+}
+
+.ReactModal__Overlay.ReactModal__Overlay--after-open {
+  position: fixed !important;
+  inset: 0px !important;
+  background-color: rgb(138 130 130 / 75%) !important;
 }

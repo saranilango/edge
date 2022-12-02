@@ -3,7 +3,7 @@ import { Card,Carousel } from 'antd';
 import DecompositionTreeGraph from '../../components/graph/multiRelationGraph';
 // import OrganizationGraphs from '../../components/graph/organizationGraph.js';
 // import { CaretDownOutlined, CaretUpOutlined } from '@ant-design/icons';
-import SvgLogo from "../../loader.svg";
+
 function Dashboard(props) {
     const contentStyle = {
         height: '250px',
