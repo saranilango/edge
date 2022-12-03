@@ -5,93 +5,167 @@ import LineFlowAnalysisGraph from './lineFlowAnalysesGraph';
 import LayoutFlowAnalysisGraph from './layoutFlowAnalysesGraph';
 import { Button } from 'antd';
 const RadialData = {
-    nodes: [
-        {
-            id: '0',
-            label: '0',
-        },
-        {
-            id: '1',
-            label: '1',
-        },
-        {
-            id: '2',
-            label: '2',
-        },
-        {
-            id: '3',
-            label: '3',
-        },
-        {
-            id: '4',
-            label: '4',
-        },
-        {
-            id: '5',
-            label: '5',
-        },
-        {
-            id: '6',
-            label: '6',
-        },
-        {
-            id: '7',
-            label: '7',
-        },
-        {
-            id: '8',
-            label: '8',
-        },
-        {
-            id: '9',
-            label: '9',
-        },
-    ],
-    edges: [
-        {
-            source: '0',
-            target: '1',
-        },
-        {
-            source: '0',
-            target: '2',
-        },
-        {
-            source: '0',
-            target: '3',
-        },
-        {
-            source: '0',
-            target: '4',
-        },
-        {
-            source: '0',
-            target: '5',
-        },
-        {
-            source: '0',
-            target: '6',
-        },
-        {
-            source: '0',
-            target: '7',
-        },
-        {
-            source: '0',
-            target: '8',
-        },
-        {
-            source: '0',
-            target: '9',
-        },
-    ],
+    nodes: [],
+    edges: []
 };
+const newRadialData =
+{
+    "nodes": [
+        {
+            "id": "182",
+            "label": "second.data_product"
+        },
+        {
+            "id": "340",
+            "label": "first.data_product"
+        },
+        {
+            "id": "398",
+            "label": "third.data_product"
+        },
+        {
+            "id": "432",
+            "label": "fourth.data_product"
+        },
+        {
+            "id": "274",
+            "label": "fifth.data_product"
+        },
+        {
+            "id": "432",
+            "label": "fourth.data_product"
+        },
+        {
+            "id": "182",
+            "label": "second.data_product"
+        },
+        {
+            "id": "340",
+            "label": "first.data_product"
+        },
+        {
+            "id": "398",
+            "label": "third.data_product"
+        }
+    ],
+    "edges": [
+        {
+            "source": "340",
+            "target": "182"
+        },
+        {
+            "source": "182",
+            "target": "398"
+        },
+        {
+            "source": "432",
+            "target": "274"
+        },
+        {
+            "source": "340",
+            "target": "182"
+        },
+        {
+            "source": "182",
+            "target": "398"
+        }
+    ],
+    "domains": [
+        [
+            {
+                "id": 167,
+                "name": "second.domain",
+                "filtered": true
+            },
+            {
+                "id": 366,
+                "name": "third.domain",
+                "filtered": true
+            },
+            {
+                "id": 672,
+                "name": "first.domain",
+                "filtered": true
+            }
+        ]
+    ],
+    "subdomains": [
+        [
+            {
+                "id": 111,
+                "name": "second.sub_domain",
+                "filtered": true
+            },
+            {
+                "id": 361,
+                "name": "first.sub_domain",
+                "filtered": false
+            },
+            {
+                "id": 614,
+                "name": "fourth.sub_domain",
+                "filtered": true
+            },
+            {
+                "id": 859,
+                "name": "third.sub_domain",
+                "filtered": false
+            }
+        ]
+    ],
+    "node": [
+        [
+            {
+                "id": 126,
+                "name": "second.node",
+                "filtered": false
+            },
+            {
+                "id": 154,
+                "name": "first.node",
+                "filtered": false
+            },
+            {
+                "id": 303,
+                "name": "fourth.node",
+                "filtered": false
+            },
+            {
+                "id": 490,
+                "name": "third.node",
+                "filtered": true
+            },
+            {
+                "id": 669,
+                "name": "fifth.node",
+                "filtered": false
+            }
+        ]
+    ],
+    "types": [
+        [
+            "isSourceDp",
+            "isConsumerDp",
+            "isAggregateDp"
+        ]
+    ]
+}
+const RadialDataNode = Object.keys(newRadialData).
+    filter((key) => key.includes('nodes')).
+    reduce((cur, key) => { return Object.assign(cur, { [key]: newRadialData[key] }) }, {});
+console.log('RadialDataNode:', RadialDataNode);
+RadialData.nodes = RadialDataNode.nodes;
+const RadialDataEdge = Object.keys(newRadialData).
+    filter((key) => key.includes('edges')).
+    reduce((cur, key) => { return Object.assign(cur, { [key]: newRadialData[key] }) }, {});
+RadialData.edges = RadialDataEdge.edges;
+console.log('RadialDataEdge:', JSON.stringify(RadialData));
+
 const DemoRadialGraph = (props) => {
     const chartRef = useRef();
     const [selectednode, setSelectednode] = useState([]);
     const [isRadial, setisRadial] = useState(true);
     const [isLineGraph, setisLineGraph] = useState(true);
-
     const config = {
         data: RadialData,
         autoFit: true,
@@ -114,22 +188,22 @@ const DemoRadialGraph = (props) => {
                 },
             },
         },
-       
+
         edgeCfg: {
             style: {
                 lineWidth: 1,
-              },
-              endArrow: {
+            },
+            endArrow: {
                 d: 10,
                 size: 1,
-              },
-              hover: {
+            },
+            hover: {
                 stroke: '#1890ff',
                 lineWidth: 1,
-              },
-              animate: true
+            },
+            animate: true
         },
-        behaviors: ['drag-canvas','zoom-canvas', 'drag-node'],
+        behaviors: ['drag-canvas', 'zoom-canvas', 'drag-node'],
         onReady: (graph) => {
             chartRef.current = graph;
             graph.on('node:dblclick', (evt) => {
@@ -147,13 +221,15 @@ const DemoRadialGraph = (props) => {
         } else {
             setisLineGraph(true)
         }
+
     });
     function setGotoRadial() {
         setisRadial(true)
     }
-     function asyncData() {
+    function asyncData() {
         return '';
-     }
+    }
+
     return (
         <div>
             {isRadial ?
@@ -165,6 +241,8 @@ const DemoRadialGraph = (props) => {
                         <LayoutFlowAnalysisGraph data={{ "layoutGraphDirection": props.data.layoutGraphDirection }} />
                     }
                     <div><Button type="primary" onClick={setGotoRadial}>Back</Button></div>
+
+                    <br></br>
                 </div>}
         </div>
     );

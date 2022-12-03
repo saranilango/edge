@@ -7,25 +7,28 @@
   background-size: cover;
   opacity: 1.5
 } */
-body{
+body {
   background: #d5d7fd !important;
 
 }
+
 .ant-layout {
   background: #d5d7fd !important;
 }
 
-.ant-layout-header{
+.ant-layout-header {
   color: #fff !important;
   background: #1B1D36 !important;
   position: sticky !important;
-  width: 100% !important;;
+  width: 100% !important;
+  ;
   z-index: 10 !important;
   top: 0;
   height: 50px !important;
   padding: 0 36px;
   display: flex;
 }
+
 .ant-layout-footer {
   color: #fff !important;
   background: #1B1D36 !important;
@@ -243,20 +246,20 @@ header h2 label {
   background-color: #1B1D36;
   display: flex;
   flex-direction: column;
-  padding: 12px 24x;
   min-height: 51px;
   color: #fff;
   width: 100%;
   position: absolute;
-  top: 10%;
+  top: 75px;
   left: 50%;
   transform: translate(-50%, -17%);
   z-index: 100;
   max-width: 80%;
-  margin: 0 auto;
+  /* margin: 0 auto; */
 }
 
-.filterOptionArea .ant-checkbox-wrapper, .filterOptionArea .ant-tabs-tab-btn {
+.filterOptionArea .ant-checkbox-wrapper,
+.filterOptionArea .ant-tabs-tab-btn {
   color: #fff;
 }
 
@@ -267,14 +270,11 @@ header h2 label {
   display: none;
   padding: 0 22px;
 }
-.checkBoxGroup .ant-tabs{
-  width:100%;
+
+.checkBoxGroup .ant-tabs {
+  width: 100%;
   margin-bottom: 8px;
 }
-
-/* .checkBoxGroup>div {
-  width: 50%;
-} */
 
 .filterOptionArea button {
   border-radius: 25px;
@@ -317,10 +317,12 @@ header h2 label {
   transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
   color: white !important;
 }
-.ant-select-arrow{
-  color:#fff !important;
+
+.ant-select-arrow {
+  color: #fff !important;
 }
-.cur{
+
+.cur {
   height: calc(100vh - 210px);
   background-color: #474c6c;
   width: 100%;
@@ -328,38 +330,43 @@ header h2 label {
   border-radius: 20px;
 }
 
-.cancur{
+.cancur {
   height: calc(100vh - 200px);
 }
 
-.filtertop{
+.filtertop {
   margin-top: 5px;
   display: flex;
   height: 25px;
   width: 100%;
   overflow: hidden;
 }
-.filtertop span{
+
+.filtertop span {
   font-weight: 600;
   width: 90%;
   margin-left: 35px;
   font-size: 17px;
   margin-top: 5px;
 }
-.filtertop .toggle{
+
+.filtertop .toggle {
   width: 10%;
   cursor: pointer;
   text-align: center;
 
 }
-.filcontent{
+
+.filcontent {
   display: flex;
   gap: 10px;
 }
+
 .ant-layout {
   background: #d5d7fd !important;
   position: relative;
 }
+
 .filter-justify {
   justify-content: space-between;
   display: flex;
@@ -380,19 +387,20 @@ header h2 label {
 
 .modal-style {
   position: absolute !important;
-    inset: 50% auto auto 50% !important;
-    border: 1px solid rgb(204, 204, 204);
-    background: rgb(255 254 254);
-    overflow: auto !important;
-    border-radius: 4px !important;
-    outline: none !important;
-    padding: 21px !important;
-    margin-right: -50% !important;
-    transform: translate(-50%, -50%);
-    width: 1000px !important;
-    min-height: 80% !important;
+  inset: 50% auto auto 50% !important;
+  border: 1px solid rgb(204, 204, 204);
+  background: rgb(255 254 254);
+  overflow: auto !important;
+  border-radius: 4px !important;
+  outline: none !important;
+  padding: 21px !important;
+  margin-right: -50% !important;
+  transform: translate(-50%, -50%);
+  width: 1000px !important;
+  min-height: 80% !important;
 }
-.primary-color{
+
+.primary-color {
   color: #1890ff !important;
 }
 
@@ -400,4 +408,77 @@ header h2 label {
   position: fixed !important;
   inset: 0px !important;
   background-color: rgb(138 130 130 / 75%) !important;
+}
+
+.ant-select-multiple .ant-select-selection-item {
+  position: relative;
+  display: flex;
+  flex: none;
+  box-sizing: border-box;
+  max-width: 100%;
+  height: 24px;
+  margin-top: 2px;
+  margin-bottom: 2px;
+  line-height: 22px;
+  background: black;
+  border: 1px solid #f0f0f0;
+  border-radius: 13px;
+  cursor: default;
+  transition: font-size 0.3s, line-height 0.3s, height 0.3s;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-margin-end: 4px;
+  margin-inline-end: 4px;
+  -webkit-padding-start: 8px;
+  padding-inline-start: 8px;
+  -webkit-padding-end: 4px;
+  padding-inline-end: 4px;
+}
+
+.ant-select-multiple .ant-select-selection-item-remove {
+  color: inherit;
+  font-style: normal;
+  line-height: 0;
+  text-align: center;
+  text-transform: none;
+  vertical-align: -0.125em;
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: inline-block;
+  color: white;
+  font-weight: bold;
+  font-size: 10px;
+  line-height: inherit;
+  cursor: pointer;
+}
+
+.bottom-card {
+  position: fixed;
+  bottom: 20px;
+  width: 100%;
+  background-color: #e9e9f1;
+  padding: 10px;
+}
+
+.rmsc .dropdown-container {
+  position: relative !important;
+  outline: 0 !important;
+  background-color: #1b1d36 !important;
+  border: 1px solid var(--rmsc-border) !important;
+  border-radius: var(--rmsc-radius) !important;
+}
+
+.rmsc .dropdown-heading {
+ color: #1b1d36 !important;
+}
+
+.rmsc .dropdown-heading .dropdown-heading-value {
+ color: white !important;
+}
+
+.rmsc .dropdown-container .dropdown-content {
+  color: #1b1d36 !important;
 }
