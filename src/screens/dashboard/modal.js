@@ -69,7 +69,7 @@ const ModalComponent = ((props, ref) => {
     function closeModal() {
         console.log('before close modal', props)
         setIsOpen(false);
-        // setModalFromLineFlow(false)
+        setModalFromLineFlow(false)
         props.data.openModal(true);
         console.log('after close modal', modalIsOpen)
     }

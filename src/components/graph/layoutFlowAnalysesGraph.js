@@ -60,6 +60,7 @@ const data = {
 const LayoutFlowAnalysisGraph = (props) => {
   const [modalIsOpen, setIsOpen] = useState(false);
   const config = {
+    size: 1,
     data,
     layout: {
       rankdir: 'TB',
@@ -171,7 +172,7 @@ const LayoutFlowAnalysisGraph = (props) => {
   return (
     <>
       <FlowAnalysisGraph {...config} />
-      {modalIsOpen ? <ModalComponent data={{ "modalIsOpen": modalIsOpen, "modalIsOpen": openModal }}></ModalComponent> : ""}
+      {modalIsOpen ? <ModalComponent data={{ "modalIsOpen": modalIsOpen }}></ModalComponent> : ""}
     </>);
 };
 

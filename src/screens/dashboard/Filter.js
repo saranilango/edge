@@ -39,9 +39,9 @@ const Filter = (props) => {
                 <div>
                     <Row>
                         <Col span={12}>
-                            <MultiSelect
+                            <MultiSelect className="paddingfive"
                                 options={domainOptions}
-                                style={{backgroundColor:"#1b1d36", }}
+                                style={{ backgroundColor: "#1b1d36", }}
                                 value={domainselected}
                                 onChange={setDomainSelected}
                                 labelledBy="Select "
@@ -58,7 +58,7 @@ const Filter = (props) => {
                     </Row>
                     <Row>
                         <Col span={12}>
-                            <MultiSelect
+                            <MultiSelect className="paddingfive"
                                 options={domainOptions}
                                 value={domainselected}
                                 onChange={setDomainSelected}
@@ -75,7 +75,7 @@ const Filter = (props) => {
                         </Col>
                     </Row>
                     <Row>
-                        <Col span={12}>
+                        <Col span={12} className="paddingfive">
                             <label>Layout Direction</label>&nbsp;&nbsp;
                             <Radio.Group onChange={onChange} value={direction}>
                                 <Radio value='LR'>Horizontal</Radio>
@@ -83,14 +83,25 @@ const Filter = (props) => {
                             </Radio.Group>
                         </Col>
                         <Col span={12}>
-                            <Button
-                                type="primary"
-                                onClick={() => {
-                                    props.onsubmit(direction);
-                                }}
-                            >
-                                Apply{" "}
-                            </Button>
+                            <Row>
+                                <Button
+                                    type="primary" danger
+                                    onClick={() => {
+                                        props.oncancel(direction);
+                                    }}
+                                >
+                                    Cancel{" "}
+                                </Button>
+                                &nbsp;&nbsp;
+                                <Button
+                                    type="primary"
+                                    onClick={() => {
+                                        props.onsubmit(direction);
+                                    }}
+                                >
+                                    Apply{" "}
+                                </Button>
+                            </Row>
                         </Col>
                     </Row>
                 </div>

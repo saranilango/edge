@@ -63,6 +63,7 @@ const LineFlowAnalysisGraph = (props) => {
     const [modalIsOpen, setIsOpen] = useState(false);
 
     const config = {
+        size: 1,
         data,
         layout: {
             rankdir: "LR"
