@@ -119,8 +119,8 @@ const DemoRadialGraph = (props) => {
             console.log('server response', response.data);
             let jsonString = JSON.stringify(response.data);
             // console.log('server response', jsonString);
-            let withoutQuotes = jsonString.replace(/"([^"]+)":/g, '$1:');
-             console.log('type', typeof(withoutQuotes), 'withoutQuotes withoutQuotes:', withoutQuotes);
+            // let withoutQuotes = jsonString.replace(/"([^"]+)":/g, '$1:');
+            //  console.log('type', typeof(withoutQuotes), 'withoutQuotes withoutQuotes:', withoutQuotes);
             RadialData.nodes = JSON.parse(jsonString).nodes;
             RadialData.edges =  JSON.parse(jsonString).edges;
             setNewRadialData(RadialData);
