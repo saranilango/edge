@@ -35,6 +35,7 @@ const DemoRadialGraph = (props) => {
             nodeSpacing: 10,
         },
         nodeCfg: {
+            asyncData,
             size: 20,
             style: {
                 fill: '#6CE8DC',
@@ -118,8 +119,8 @@ const DemoRadialGraph = (props) => {
             console.log('server response', response.data);
             let jsonString = JSON.stringify(response.data);
             // console.log('server response', jsonString);
-            // let withoutQuotes = jsonString.replace(/"([^"]+)":/g, '$1:');
-            //  console.log('type', typeof(withoutQuotes), 'withoutQuotes withoutQuotes:', withoutQuotes);
+            let withoutQuotes = jsonString.replace(/"([^"]+)":/g, '$1:');
+             console.log('type', typeof(withoutQuotes), 'withoutQuotes withoutQuotes:', withoutQuotes);
             RadialData.nodes = JSON.parse(jsonString).nodes;
             RadialData.edges =  JSON.parse(jsonString).edges;
             setNewRadialData(RadialData);
@@ -132,7 +133,10 @@ const DemoRadialGraph = (props) => {
     function setGotoRadial() {
         setisRadial(true)
     }
-    
+    function asyncData() {
+        return '';
+    }
+
     return (
 
         <>
