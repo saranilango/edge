@@ -4,170 +4,30 @@ import { RadialGraph } from '@ant-design/graphs';
 import LineFlowAnalysisGraph from './lineFlowAnalysesGraph';
 import LayoutFlowAnalysisGraph from './layoutFlowAnalysesGraph';
 import { Button } from 'antd';
-const RadialData = {
-    nodes: [],
-    edges: []
-};
-const newRadialData =
-{
-    "nodes": [
-        {
-            "id": "182",
-            "label": "second.data_product"
-        },
-        {
-            "id": "340",
-            "label": "first.data_product"
-        },
-        {
-            "id": "398",
-            "label": "third.data_product"
-        },
-        {
-            "id": "432",
-            "label": "fourth.data_product"
-        },
-        {
-            "id": "274",
-            "label": "fifth.data_product"
-        },
-        {
-            "id": "432",
-            "label": "fourth.data_product"
-        },
-        {
-            "id": "182",
-            "label": "second.data_product"
-        },
-        {
-            "id": "340",
-            "label": "first.data_product"
-        },
-        {
-            "id": "398",
-            "label": "third.data_product"
-        }
-    ],
-    "edges": [
-        {
-            "source": "340",
-            "target": "182"
-        },
-        {
-            "source": "182",
-            "target": "398"
-        },
-        {
-            "source": "432",
-            "target": "274"
-        },
-        {
-            "source": "340",
-            "target": "182"
-        },
-        {
-            "source": "182",
-            "target": "398"
-        }
-    ],
-    "domains": [
-        [
-            {
-                "id": 167,
-                "name": "second.domain",
-                "filtered": true
-            },
-            {
-                "id": 366,
-                "name": "third.domain",
-                "filtered": true
-            },
-            {
-                "id": 672,
-                "name": "first.domain",
-                "filtered": true
-            }
-        ]
-    ],
-    "subdomains": [
-        [
-            {
-                "id": 111,
-                "name": "second.sub_domain",
-                "filtered": true
-            },
-            {
-                "id": 361,
-                "name": "first.sub_domain",
-                "filtered": false
-            },
-            {
-                "id": 614,
-                "name": "fourth.sub_domain",
-                "filtered": true
-            },
-            {
-                "id": 859,
-                "name": "third.sub_domain",
-                "filtered": false
-            }
-        ]
-    ],
-    "node": [
-        [
-            {
-                "id": 126,
-                "name": "second.node",
-                "filtered": false
-            },
-            {
-                "id": 154,
-                "name": "first.node",
-                "filtered": false
-            },
-            {
-                "id": 303,
-                "name": "fourth.node",
-                "filtered": false
-            },
-            {
-                "id": 490,
-                "name": "third.node",
-                "filtered": true
-            },
-            {
-                "id": 669,
-                "name": "fifth.node",
-                "filtered": false
-            }
-        ]
-    ],
-    "types": [
-        [
-            "isSourceDp",
-            "isConsumerDp",
-            "isAggregateDp"
-        ]
-    ]
-}
-const RadialDataNode = Object.keys(newRadialData).
-    filter((key) => key.includes('nodes')).
-    reduce((cur, key) => { return Object.assign(cur, { [key]: newRadialData[key] }) }, {});
-console.log('RadialDataNode:', RadialDataNode);
-RadialData.nodes = RadialDataNode.nodes;
-const RadialDataEdge = Object.keys(newRadialData).
-    filter((key) => key.includes('edges')).
-    reduce((cur, key) => { return Object.assign(cur, { [key]: newRadialData[key] }) }, {});
-RadialData.edges = RadialDataEdge.edges;
-console.log('RadialDataEdge:', JSON.stringify(RadialData));
+import axios from 'axios';
+
+// const RadialData = {
+//     nodes: [],
+//     edges: []
+// };
+// const newRadialData =
+// {
+
+// }
+
 
 const DemoRadialGraph = (props) => {
     const chartRef = useRef();
     const [selectednode, setSelectednode] = useState([]);
     const [isRadial, setisRadial] = useState(true);
     const [isLineGraph, setisLineGraph] = useState(true);
-    const config = {
-        data: RadialData,
+    const [newRadialData, setNewRadialData] = useState({});
+    const [RadialData, setRadialData] = useState({
+        nodes: [],
+        edges: []
+    })
+    let config = {
+        data: RadialData !== undefined && RadialData.edges!==undefined && RadialData.nodes!==undefined ? RadialData : { nodes: [], edges: [] },
         autoFit: true,
         layout: {
             unitRadius: 80,
@@ -175,7 +35,6 @@ const DemoRadialGraph = (props) => {
             nodeSpacing: 10,
         },
         nodeCfg: {
-            asyncData,
             size: 20,
             style: {
                 fill: '#6CE8DC',
@@ -214,26 +73,72 @@ const DemoRadialGraph = (props) => {
             });
         },
     };
+    function prepareGraphData() {
+        const RadialDataNode = Object.keys(newRadialData).
+            filter((key) => key.includes('nodes')).
+            reduce((cur, key) => { return Object.assign(cur, { [key]: newRadialData[key] }) }, {});
+        // console.log('RadialDataNode:', RadialDataNode);
+        RadialData.nodes = RadialDataNode.nodes;
+        const RadialDataEdge = Object.keys(newRadialData).
+            filter((key) => key.includes('edges')).
+            reduce((cur, key) => { return Object.assign(cur, { [key]: newRadialData[key] }) }, {});
+        RadialData.edges = RadialDataEdge.edges;
+        // console.log('RadialDataEdge:', JSON.stringify(RadialData));
+        console.log('server RadialData', config);
+    }
+
+
     useEffect(() => {
         console.log('selectednode in radial:', props.data.graphDirection);
+        getUser();
         if (props.data.graphDirection === "TB") {
             setisLineGraph(false);
         } else {
             setisLineGraph(true)
         }
 
-    });
+    }, []);
+
+
+    useEffect(() => {
+        prepareGraphData();
+    }, [newRadialData]);
+
+    async function getUser() {
+        const getDataUrl = 'http://127.0.0.1:8000/api/domain/';
+        const payload = {
+            "dom_id": [],
+            "sub_id": [],
+            "node_id": [],
+            "types_id": []
+        }
+
+        try {
+            const response = await axios.post(getDataUrl, payload);
+            console.log('server response', response.data);
+            let jsonString = JSON.stringify(response.data);
+            // console.log('server response', jsonString);
+            // let withoutQuotes = jsonString.replace(/"([^"]+)":/g, '$1:');
+            //  console.log('type', typeof(withoutQuotes), 'withoutQuotes withoutQuotes:', withoutQuotes);
+            RadialData.nodes = JSON.parse(jsonString).nodes;
+            RadialData.edges =  JSON.parse(jsonString).edges;
+            setNewRadialData(RadialData);
+            // console.log('server RadialData', RadialData);
+
+        } catch (error) {
+            console.error(error);
+        }
+    }
     function setGotoRadial() {
         setisRadial(true)
     }
-    function asyncData() {
-        return '';
-    }
-
+    
     return (
-        <div>
+
+        <>
+            {/* <div>{JSON.stringify(config.data)}</div> */}
             {isRadial ?
-                <div><RadialGraph {...config} /> </div> :
+                <RadialGraph {...config} />  :
                 <div>
                     {isLineGraph ?
                         <LineFlowAnalysisGraph data={{ "flowdirection": props.data.graphDirection }} />
@@ -244,7 +149,7 @@ const DemoRadialGraph = (props) => {
 
                     <br></br>
                 </div>}
-        </div>
+        </>
     );
 
 };

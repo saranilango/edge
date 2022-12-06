@@ -5,6 +5,7 @@ import { MenuUnfoldOutlined, CaretDownFilled, CaretUpFilled, PlusCircleOutlined,
 import Filter from './screens/dashboard/filter.js'
 import DemoRadialGraph from './components/graph/radialGraph';
 import CounterInput from "react-counter-input";
+
 const { Header, Footer, Content } = Layout;
 
 function App() {
@@ -37,6 +38,8 @@ function App() {
   const onChangeCounter = (value) => {
     console.log('changed', value);
   };
+
+
   return (
     <>
       <Layout>
@@ -60,9 +63,10 @@ function App() {
 
         <div className='bottom-card'>
           <Row>
-            <Col span={12}><Input placeholder="Data Product" disabled /></Col>
+            <Col span={12}></Col>
             <Col span={12}>
-              <CounterInput min={0} max={10}  onCountChange={onChangeCounter} />
+              <label>Data Product</label>
+              <CounterInput min={0} max={10} onCountChange={onChangeCounter} />
             </Col>
           </Row>
         </div>
